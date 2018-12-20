@@ -46,20 +46,6 @@ var explosions;
 var intervalo_balas = 400;
 var tempo_stage = 40000;
 var texto_LCD;
-var instrucoes = {
-	preload: function(){
-
-	},
-	create: function(){
-		var style = { font: "20px prstart", fill: "#ffffff", align: "center" };
-		var text = game.add.text(game.world.centerX, game.world.centerY, "INSTRUÇÕES \n\nPLAYER 1\nDIRECIONAIS - MOVE O SOLDADO\n[ESPAÇO] - DISPARA\n\nPLAYER 2\n[A & D] - MOVE O SOLDADO\n[W] - DISPARA\n\nBOA SORTE!", style);
-		text.anchor.set(0.5);
-		game.time.events.add(Phaser.Timer.SECOND * 2, jogar, this);
-	},
-	update: function(){
-
-	}
-};
 
 var menu = {
 	preload: function(){
@@ -345,6 +331,7 @@ function colisao(bala, alien){
 	var explosion = explosions.getFirstExists(false);
     explosion.reset(alien.body.x, alien.body.y);
     explosion.play('explodir', 80, false, true);
+	game.add.tween(explosion).to( { x: '+90' }, 1000, Phaser.Easing.Linear.None, true);
 }
 
 function descer(){
