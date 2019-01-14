@@ -21,21 +21,19 @@ function draw()
   if(frameCount%50==0&&readyShot<5)
     readyShot++;
   barra.render(readyShot);
+  for(let i=inimigos.length-1;i>=0;i--)
+  {
+        inimigos[i].render();
+  }
   for(let i=bullets.length-1;i>=0;i--)
   {
-    if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i]>windowHeight)
+    if(bullets[i].x)
+    else if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i]>windowHeight)
       bullets.slice(i,i+1);
     else
         bullets[i].render();
   }
-  for(let i=inimigos.length-1;i>=0;i--)
-  {
-  //  if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i]>windowHeight)
-    //  bullets.slice(i,i+1);
-    //else if()
-  //  else
-        inimigos[i].render();
-  }
+
 
 }
 function tecla()
@@ -67,8 +65,8 @@ function mobile()
   else if(rotationY<-20) {
     nave.walk(false);
   }
-  if(touches.length>0)
-  {
-    atirar();
-  }
+}
+function touchStarted()
+{
+  atirar();
 }
