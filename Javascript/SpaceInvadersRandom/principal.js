@@ -14,7 +14,7 @@ function setup()
 }
 function draw()
 {
-  background(40,150);
+  background(0,150);
   tecla();
   mobile();
   nave.render();
