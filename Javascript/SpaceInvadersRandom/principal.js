@@ -15,18 +15,6 @@ function setup()
 function draw()
 {
   background(40,150);
-
-  var s = 'rotationY-'+rotationY+'rotationZ-'+rotationZ+'rotationX-'+'rotationX-';
-
-    fill(255);
-    text(s, 200, 70, 80); // Text wraps within text box
-
-
-
-
-
-
-
   tecla();
   mobile();
   nave.render();
@@ -69,10 +57,10 @@ function keyPressed()
 }
 function mobile()
 {
-  if(rotationY>0){
+  if(rotationY>30){
     nave.walk(true);
   }
-  else if(rotationY<-0) {
+  else if(rotationY<-30) {
     nave.walk(false);
   }
 }
