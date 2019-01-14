@@ -57,10 +57,10 @@ function keyPressed()
 }
 function mobile()
 {
-  if(radians(rotationY)>20){
+  if(rotationY>20){
     nave.walk(true);
   }
-  else if(radians(rotationY)<-20) {
+  else if(rotationY<-20) {
     nave.walk(false);
   }
 }
