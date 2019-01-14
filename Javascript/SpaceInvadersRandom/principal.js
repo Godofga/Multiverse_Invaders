@@ -14,7 +14,7 @@ function setup()
 }
 function draw()
 {
-  background(0,150);
+  background(40,150);
   tecla();
   mobile();
   nave.render();
@@ -60,7 +60,7 @@ function atirar()
 }
 function mobile()
 {
-  if(deviceOrientation==portrait)
+  if(deviceOrientation=='portrait')
   {
     if(rotationY>20){
       nave.walk(true);
