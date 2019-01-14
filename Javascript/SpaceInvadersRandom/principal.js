@@ -60,12 +60,24 @@ function atirar()
 }
 function mobile()
 {
-  if(rotationY>20){
-    nave.walk(true);
+  if(deviceOrientation==portrait)
+  {
+    if(rotationY>20){
+      nave.walk(true);
+    }
+    else if(rotationY<-20) {
+      nave.walk(false);
+    }
+  }else{
+    if(rotationX>20){
+      nave.walk(true);
+    }
+    else if(rotationX<-20) {
+      nave.walk(false);
+    }
   }
-  else if(rotationY<-20) {
-    nave.walk(false);
-  }
+
+
 }
 function touchStarted()
 {
