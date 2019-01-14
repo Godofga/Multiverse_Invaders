@@ -14,6 +14,18 @@ function setup()
 }
 function draw()
 {
+
+
+  var s = 'rotationY-'+rotationY+'rotationZ'+rotationZ+'rotationX'+'rotationX';
+
+fill(50);
+text(s, 10, 10, 70, 80); // Text wraps within text box
+
+
+
+
+
+
   background(40,150);
   tecla();
   mobile();
