@@ -27,8 +27,9 @@ function draw()
   }
   for(let i=bullets.length-1;i>=0;i--)
   {
-    if(bullets[i].x) print('iajsd');
-    else if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i]>windowHeight)
+    //if(bullets[i].x) print('iajsd');
+    //else
+     if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i]>windowHeight)
       bullets.slice(i,i+1);
     else
         bullets[i].render();
