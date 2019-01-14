@@ -48,19 +48,27 @@ function tecla()
 
 function keyPressed()
 {
-  if(keyIsDown(BACKSPACE)&&readyShot>0)
+  if(key==' '&&readyShot>0)
   {
-    bullets.push(new Bala(nave.x+nave.dimensions/2,nave.y));
-    bullets[bullets.length-1].start();
-    readyShot--;
+    atirar();
   }
+}
+function atirar()
+{
+  bullets.push(new Bala(nave.x+nave.dimensions/2,nave.y));
+  bullets[bullets.length-1].start();
+  readyShot--;
 }
 function mobile()
 {
-  if(rotationY>30){
+  if(rotationY>20){
     nave.walk(true);
   }
-  else if(rotationY<-30) {
+  else if(rotationY<-20) {
     nave.walk(false);
+  }
+  if(touches.length>0)
+  {
+    atirar();
   }
 }
