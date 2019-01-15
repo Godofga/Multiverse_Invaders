@@ -1,19 +1,9 @@
-var readyShot=10000, readyShote=false,once=true;
+var readyShot=5, readyShote=false,once=true;
 var barra,win, bg=[40,150],wiin=false;
-var estouro= [];
 function setup()
 {
   background(40);
-  estouro.push(createAudio('./audio/pop1.mp3'));
-  estouro.push(createAudio('./audio/pop2.mp3'));
-  estouro.push(createAudio('./audio/pop3.mp3'));
-  estouro.push(createAudio('./audio/pop4.mp3'));
-  estouro.push(createAudio('./audio/pop5.mp3'));
-  estouro.push(createAudio('./audio/pop1.mp3'));
-  estouro.push(createAudio('./audio/pop2.mp3'));
-  estouro.push(createAudio('./audio/pop3.mp3'));
-  estouro.push(createAudio('./audio/pop4.mp3'));
-  estouro.push(createAudio('./audio/pop5.mp3'));
+  loade();
 }
 function draw()
 {
@@ -110,6 +100,7 @@ function vitoria()
   bg=[255];
   nave.color=0;
   wiin=true;
+  victowry();
 }
 
 
