@@ -1,5 +1,5 @@
 var readyShot=5, readyShote=false,once=true;
-var barra;
+var barra,win, bg=[40,150];
 function setup()
 {
   background(40);
@@ -14,39 +14,44 @@ function draw()
     nave= new Nave();
     barra= new Barra();
     nave.start();
-    gerarInimigos();
+    gerarInimigos(false);
   }
 
-  background(40,150);
+  background(bg);
   tecla();
   mobile();
   nave.render();
   if(frameCount%50==0&&readyShot<5)
     readyShot++;
   readyShote=frameCount%10?true:readyShote;
-  barra.render(readyShot);
+  barra.render(readyShot,win);
   for(let i=bullets.length-1;i>=0;i--)
   {
 
-     if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i].y+bullets[i].a>windowHeight)
-      bullets.slice(i,i+1);
+    if(bullets[i].y+bullets[i].a<=0)
+     bullets.splice(i,i+1);
 
     else{
       for(let a= inimigos.length-1;a>=0;a--)
       {
-        if(inimigos[a].y1<inimigos[a].y2)
+        if(inimigos[a].vivo)
         {
-          if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y>=inimigos[a].y1&&bullets[i].y+bullets[i].a<=inimigos[a].y2)
+
+          if(inimigos[a].y1<inimigos[a].y2)
           {
-            inimigos[a].morte();
+            if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y>=inimigos[a].y1&&bullets[i].y+bullets[i].a<=inimigos[a].y2)
+            {
+              inimigos[a].morte();
+            }
+          }
+          else {
+            if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y<=inimigos[a].y1&&bullets[i].y+bullets[i].a>=inimigos[a].y2)
+            {
+              inimigos[a].morte();
+            }
           }
         }
-        else {
-          if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y<=inimigos[a].y1&&bullets[i].y+bullets[i].a>=inimigos[a].y2)
-          {
-            inimigos[a].morte();
-          }
-        }
+
 
       }
         bullets[i].render();
@@ -54,26 +59,48 @@ function draw()
     }
 
   }
-  for(let i=inimigos.length-1;i>=0;i--)
+  if(!win)
   {
-        if(inimigos[i].cor[3]==0)
-        {
-          inimigos.slice(i,i+1);
-        }
-        else {
-          inimigos[i].render();
-        }
+    win=true;
 
+
+    for(let i=inimigos.length-1;i>=0;i--)
+    {
+      inimigos[i].render();
+      if(inimigos[i].vivo)
+        win=false;
+    }
+    if(win)
+      vitoria();
   }
 
 
 }
+
+
+function vitoria()
+{
+
+  for(let i=inimigos.length-1;i>=0;i--)
+  {
+    inimigos= undefined;
+  }
+  gerarInimigos(true);
+  bg=[255];
+  nave.color=0;
+}
+
+
 function tecla()
 {
-  if(keyIsDown(LEFT_ARROW)||keyIsDown(RIGHT_ARROW))
+  if(keyIsDown('d')||keyIsDown(RIGHT_ARROW))
   {
     nave.walk(keyIsDown(RIGHT_ARROW));
   }
+  else if (keyIsDown('a')||keyIsDown(LEFT_ARROW)) {
+    nave.walk(keyIsDown(LEFT_ARROW));
+  }
+
 }
 
 function keyPressed()
@@ -85,7 +112,7 @@ function keyPressed()
 }
 function atirar()
 {
-  bullets.push(new Bala(nave.x+nave.dimensions/2,nave.y));
+  bullets.push(new Bala(nave.x+nave.dimensions/2,nave.y,win?0:255));
   bullets[bullets.length-1].start();
   readyShot--;
 }

@@ -20,7 +20,7 @@ function Inimigo(x2,y1,y2,velocidade)
     }
 
   };
-  this.cor=/*round(random(60,220));*/[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240];
+  this.cor=[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240];
   this.render= function()
   {
       noStroke();
@@ -38,14 +38,14 @@ function Inimigo(x2,y1,y2,velocidade)
 
       }
 
-        if(this.vivo&&this.velocidade>0&&this.x1+ this.velocidade>windowWidth+this.velocidade)
+        if(this.vivo&&this.velocidade>0&&this.x2-windowWidth/60+ this.velocidade>windowWidth+this.velocidade)
         {
           this.x1=-windowWidth/30 ;
           this.x2=-windowWidth/60;
           this.x3=0;
         }
 
-        else if(this.vivo&&this.velocidade<0&&this.x3+ this.velocidade<this.velocidade)
+        else if(this.vivo&&this.velocidade<0&&this.x2+windowWidth/60+ this.velocidade<this.velocidade)
         {
           this.x1=windowWidth;
           this.x2=windowWidth+windowWidth/60;
@@ -72,6 +72,14 @@ function Inimigo(x2,y1,y2,velocidade)
   };
   function gerarInimigos()
   {
+
+    /*
+
+    inimigos[i].cor=[round(random(50,255)),round(random(50,255)),round(random(50,255 )),240];
+    inimigos[i].velocidade*=2;
+    inimigos[i].h=false;
+
+    */
     var switche=true;
     var espacamento= 1.2;
     for(let y=windowWidth/30;y<windowHeight/2;)

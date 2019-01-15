@@ -1,5 +1,5 @@
 var bullets=[];
-function Bala(x,y)
+function Bala(x,y,cor)
 {
   this.x=x;
   this.y=y;
@@ -7,7 +7,7 @@ function Bala(x,y)
   this.l=windowWidth/100;
   this.velocidade=random(windowHeight/150,windowHeight/200);
   this.angulo=random(-0.06,0.06);
-  this.cor= 255;//[100,0,200,200];
+  this.cor= cor;//[100,0,200,200];
 
   this.start= function()
   {
