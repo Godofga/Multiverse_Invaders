@@ -7,80 +7,83 @@ function setup()
 function draw()
 {
   if(deviceOrientation=='portrait')
-    alert("Vire agor  a o dispositivo para modo paisagem agora para uma melhor experiência!");
-  if(once){
-    createCanvas(windowWidth,windowHeight-4);
-    once=false;
-    nave= new Nave();
-    barra= new Barra();
-    nave.start();
-    gerarInimigos(true);
-  }
+    alert("Vire agora o dispositivo para modo paisagem agora para uma melhor experiência!");
+  else {
+    if(once){
+      createCanvas(windowWidth,windowHeight-4);
+      once=false;
+      nave= new Nave();
+      barra= new Barra();
+      nave.start();
+      gerarInimigos(true);
+    }
 
-  background(bg);
-  if(wiin)
-  {
-    fill(0);
-    noStroke();
-    textAlign(CENTER);
-    textStyle(BOLD);
-    textSize(windowWidth/30);
-    text('Obrigado por jogar ^^', windowWidth/2, (3*windowHeight)/4);
-  }
+    background(bg);
+    if(wiin)
+    {
+      fill(0);
+      noStroke();
+      textAlign(CENTER);
+      textStyle(BOLD);
+      textSize(windowWidth/30);
+      text('Obrigado por jogar ^^', windowWidth/2, (3*windowHeight)/4);
+    }
 
-  tecla();
-  mobile();
-  nave.render();
-  if(frameCount%50==0&&readyShot<5)
-    readyShot++;
-  readyShote=frameCount%10?true:readyShote;
-  barra.render(readyShot,wiin);
-  for(let i=bullets.length-1;i>=0;i--)
-  {
+    tecla();
+    mobile();
+    nave.render();
+    if(frameCount%50==0&&readyShot<5)
+      readyShot++;
+    readyShote=frameCount%10?true:readyShote;
+    barra.render(readyShot,wiin);
+    for(let i=bullets.length-1;i>=0;i--)
+    {
 
-    if(bullets[i].y+bullets[i].a<=0)
-     bullets.splice(i,i+1);
+      if(bullets[i].y+bullets[i].a<=0)
+       bullets.splice(i,i+1);
 
-    else{
-      for(let a= inimigos.length-1;a>=0;a--)
-      {
-        if(inimigos[a].vivo)
+      else{
+        for(let a= inimigos.length-1;a>=0;a--)
         {
-
-          if(inimigos[a].y1<inimigos[a].y2)
+          if(inimigos[a].vivo)
           {
-            if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y>=inimigos[a].y1&&bullets[i].y+bullets[i].a<=inimigos[a].y2)
-            {
-              inimigos[a].morte();
-            }
-          }
-          else {
-            if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y<=inimigos[a].y1&&bullets[i].y+bullets[i].a>=inimigos[a].y2)
-            {
-              inimigos[a].morte();
-            }
-          }
-        }
 
+            if(inimigos[a].y1<inimigos[a].y2)
+            {
+              if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y>=inimigos[a].y1&&bullets[i].y+bullets[i].a<=inimigos[a].y2)
+              {
+                inimigos[a].morte();
+              }
+            }
+            else {
+              if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y<=inimigos[a].y1&&bullets[i].y+bullets[i].a>=inimigos[a].y2)
+              {
+                inimigos[a].morte();
+              }
+            }
+          }
+
+
+        }
+          bullets[i].render();
 
       }
-        bullets[i].render();
 
     }
+
+      win=true;
+      for(let i=inimigos.length-1;i>=0;i--)
+      {
+        inimigos[i].render();
+        if(inimigos[i].vivo)
+          win=false;
+      }
+      if(win&&!wiin)
+        vitoria();
+      win=false;
+
 
   }
-
-    win=true;
-    for(let i=inimigos.length-1;i>=0;i--)
-    {
-      inimigos[i].render();
-      if(inimigos[i].vivo)
-        win=false;
-    }
-    if(win&&!wiin)
-      vitoria();
-    win=false;
-
 
 }
 
