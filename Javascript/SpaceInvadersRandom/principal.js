@@ -7,7 +7,7 @@ function setup()
 function draw()
 {
   if(deviceOrientation=='portrait')
-    alert("Vire agora o dispositivo para modo paisagem agora para uma melhor experiência!");
+    alert("Vire agor  a o dispositivo para modo paisagem agora para uma melhor experiência!");
   if(once){
     createCanvas(windowWidth,windowHeight-4);
     once=false;
@@ -23,7 +23,7 @@ function draw()
     fill(0);
     noStroke();
     textAlign(CENTER);
-    text
+    textStyle(BOLD);
     textSize(windowWidth/30);
     text('Obrigado por jogar ^^', windowWidth/2, (3*windowHeight)/4);
   }

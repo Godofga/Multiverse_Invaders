@@ -15,7 +15,11 @@ function Inimigo(x2,y1,y2,velocidade,cor)
     if(this.vivo)
     {
       this.vivo=false;
-      this.cor=[255,255,255,255];
+      if(cor[1]>0||cor[2]>0)
+        this.cor=[0,0,0,230];
+      else {
+        this.cor=[255,255,255,230];
+      }
       this.x1+=windowWidth/1000;
       this.x3-=windowWidth/1000;
     }
