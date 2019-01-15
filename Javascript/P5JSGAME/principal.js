@@ -1,4 +1,4 @@
-var readyShot=5, readyShote=false,once=true;
+var readyShot=5,once=true;
 var barra,win, bg=[40,150],wiin=false;
 function setup()
 {
@@ -8,7 +8,7 @@ function setup()
 function draw()
 {
   if(deviceOrientation=='portrait')
-    alert("Vire agora o dispositivo para modo paisagem agora para uma melhor experiência!");
+    alert("Vire o dispositivo para modo paisagem e reinicie a página!");
   else {
     if(once){
       createCanvas(windowWidth,windowHeight-4);
@@ -35,7 +35,7 @@ function draw()
     nave.render();
     if(frameCount%50==0&&readyShot<5)
       readyShot++;
-    readyShote=frameCount%10?true:readyShote;
+    
     barra.render(readyShot,wiin);
     for(let i=bullets.length-1;i>=0;i--)
     {
@@ -150,12 +150,12 @@ function mobile()
 
 
 }
-function touchStarted()
+function touchEnded()
 {
-  if(readyShot>0&&readyShote==true)
+  if(readyShot>0)
   {
     atirar();
-    readyShote=false;
+
   }
 
 }
