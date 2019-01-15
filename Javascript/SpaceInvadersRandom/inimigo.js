@@ -90,7 +90,7 @@ function Inimigo(x2,y1,y2,velocidade,cor)
     for(let y=windowWidth/30;y<windowHeight/2;)
     {
       var velocidade=switche?random(windowWidth/300,windowWidth/500):-random(windowWidth/300,windowWidth/500);
-      !first?velocidade*=2:velocidade*=1;
+      !first?velocidade*=1.5:velocidade*=1;
       for(let x=0;x<windowWidth;)
       {
         if(x+windowWidth/15<windowWidth+windowWidth/15)
