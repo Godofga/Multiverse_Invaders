@@ -18,6 +18,10 @@ function musicyea()
 Ideal for Lifestyle, fashion, sports, innovative technology, bar and lounge movies. 117bpm (Artist: Vodovoz) */
   musica.volume(0.5);
   musica.loop();
+  if(deviceOrientation=='portrait'||deviceOrientation=='landscape');
+  {
+    musica.play();
+  }
 }
 function loade()
 {
