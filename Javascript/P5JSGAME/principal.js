@@ -4,7 +4,7 @@ function setup()
 {
   background(40);
   loade();
-  
+
 }
 function draw()
 {

@@ -16,6 +16,7 @@ function musicyea()
 {
   /*Atmospheric French-style chillout with a retro beat, accompanied by a Guitars, Rhodes, bass, synth pads and arpeggios, ambience, percussion and dub effects. Conveys a romantically dreamy mood.
 Ideal for Lifestyle, fashion, sports, innovative technology, bar and lounge movies. 117bpm (Artist: Vodovoz) */
+  print('playing');
   musica.volume(0.5);
   musica.loop();
   if(deviceOrientation=='portrait'||deviceOrientation=='landscape');
