@@ -1,5 +1,5 @@
 var readyShot=10000, readyShote=false,once=true;
-var barra,win, bg=[40,150];
+var barra,win, bg=[40,150],wiin=false;
 function setup()
 {
   background(40);
@@ -7,7 +7,7 @@ function setup()
 function draw()
 {
   if(deviceOrientation=='portrait')
-    alert("Vire o dispositivo para modo paisagem agora para uma melhor experiência");
+    alert("Vire agora o dispositivo para modo paisagem agora para uma melhor experiência!");
   if(once){
     createCanvas(windowWidth,windowHeight-4);
     once=false;
@@ -18,13 +18,23 @@ function draw()
   }
 
   background(bg);
+  if(wiin)
+  {
+    fill(0);
+    noStroke();
+    textAlign(CENTER);
+    text
+    textSize(windowWidth/30);
+    text('Obrigado por jogar ^^', windowWidth/2, (3*windowHeight)/4);
+  }
+
   tecla();
   mobile();
   nave.render();
   if(frameCount%50==0&&readyShot<5)
     readyShot++;
   readyShote=frameCount%10?true:readyShote;
-  barra.render(readyShot,win);
+  barra.render(readyShot,wiin);
   for(let i=bullets.length-1;i>=0;i--)
   {
 
@@ -59,20 +69,17 @@ function draw()
     }
 
   }
-  if(!win)
-  {
+
     win=true;
-
-
     for(let i=inimigos.length-1;i>=0;i--)
     {
       inimigos[i].render();
       if(inimigos[i].vivo)
         win=false;
     }
-    if(win)
+    if(win&&!wiin)
       vitoria();
-  }
+    win=false;
 
 
 }
@@ -88,6 +95,7 @@ function vitoria()
   gerarInimigos(false);
   bg=[255];
   nave.color=0;
+  wiin=true;
 }
 
 
@@ -112,7 +120,7 @@ function keyPressed()
 }
 function atirar()
 {
-  bullets.push(new Bala(nave.x+nave.dimensions/2,nave.y,win?0:255));
+  bullets.push(new Bala(nave.x+nave.dimensions/2,nave.y,wiin?0:255));
   bullets[bullets.length-1].start();
   readyShot--;
 }

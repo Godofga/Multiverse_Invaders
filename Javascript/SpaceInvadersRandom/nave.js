@@ -12,7 +12,7 @@ function Nave(){
     };
     this.walk= function (direita)
     {
-      ((this.x-this.dimensions/2-this.velocidade)<=0)&&!direita?this.x=0:(this.x+this.dimensions/2+this.velocidade)>=windowWidth-this.dimensions&&direita?this.x=windowWidth-this.dimensions:this.x+=direita?this.velocidade:-this.velocidade;
+      ((this.x-this.velocidade)<=0)&&!direita?this.x=0:(this.x+this.dimensions/2+this.velocidade)>=windowWidth-this.dimensions/2&&direita?this.x=windowWidth-this.dimensions:this.x+=direita?this.velocidade:-this.velocidade;
 
     };
     this.start= function (){

@@ -10,6 +10,7 @@ function Inimigo(x2,y1,y2,velocidade,cor)
   this.h=false;
   this.velocidade= velocidade;
   this.vivo=true;
+  this.cor=cor;
   this.morte= function(){
     if(this.vivo)
     {
@@ -20,7 +21,7 @@ function Inimigo(x2,y1,y2,velocidade,cor)
     }
 
   };
-  this.cor=cor;
+
   this.render= function()
   {
       noStroke();
@@ -79,7 +80,7 @@ function Inimigo(x2,y1,y2,velocidade,cor)
     inimigos[i].h=false;
 
     */
-    print(first);
+
     var switche=true;
     var espacamento= 1.2;
     for(let y=windowWidth/30;y<windowHeight/2;)
@@ -94,9 +95,14 @@ function Inimigo(x2,y1,y2,velocidade,cor)
           var y2=y+sqrt(3*((windowWidth/30))*((windowWidth/30)))/2;
 
           if(first)
-            inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade, [round(random(15,45)),round(random(0,0)),round(random(0,0 )),240]));
+          {
+              inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade, [round(random(15,45)),round(random(0,0)),round(random(0,0 )),240]));
+
+          }
+
           else {
             inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade, [round(random(50,220)),round(random(50,220)),round(random(50,220 )),240]));
+
           }
           x+=(windowWidth/30)*espacamento;
 
@@ -114,8 +120,10 @@ function Inimigo(x2,y1,y2,velocidade,cor)
 
           if(first)
             inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade,[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240]));
+
           else {
             inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade,[round(random(50,220)),round(random(50,220)),round(random(50,220 )),240]));
+
           }
           x+=(windowWidth/30)*espacamento;
 
@@ -126,4 +134,5 @@ function Inimigo(x2,y1,y2,velocidade,cor)
 
       inimigos.pop();
     }
+    print(inimigos.length);
   }
