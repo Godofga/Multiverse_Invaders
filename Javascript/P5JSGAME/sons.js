@@ -1,7 +1,7 @@
 var estouro= [];
 var vitori;
 var musica;
-var isPlaying== false;
+var isPlaying= false;
 function spop()
 {
   estouro[round(random(0,estouro.length-1))].volume(0.6);
