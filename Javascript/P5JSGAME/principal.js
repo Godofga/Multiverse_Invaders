@@ -1,8 +1,19 @@
 var readyShot=10000, readyShote=false,once=true;
 var barra,win, bg=[40,150],wiin=false;
+var estouro= [];
 function setup()
 {
   background(40);
+  estouro.push(createAudio('./audio/pop1.mp3'));
+  estouro.push(createAudio('./audio/pop2.mp3'));
+  estouro.push(createAudio('./audio/pop3.mp3'));
+  estouro.push(createAudio('./audio/pop4.mp3'));
+  estouro.push(createAudio('./audio/pop5.mp3'));
+  estouro.push(createAudio('./audio/pop1.mp3'));
+  estouro.push(createAudio('./audio/pop2.mp3'));
+  estouro.push(createAudio('./audio/pop3.mp3'));
+  estouro.push(createAudio('./audio/pop4.mp3'));
+  estouro.push(createAudio('./audio/pop5.mp3'));
 }
 function draw()
 {
@@ -123,6 +134,7 @@ function keyPressed()
 }
 function atirar()
 {
+  spop();
   bullets.push(new Bala(nave.x+nave.dimensions/2,nave.y,wiin?0:255));
   bullets[bullets.length-1].start();
   readyShot--;
