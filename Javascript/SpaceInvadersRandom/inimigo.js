@@ -7,33 +7,67 @@ function Inimigo(x2,y1,y2,velocidade)
   this.y2=y2;
   this.x3=x2+windowWidth/60;
   this.y3=y1;
-  this.h=windowWidth/15;
+  this.h=false;
   this.velocidade= velocidade;
-  this.cor=/*round(random(60,220));*/[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240]
+  this.vivo=true;
+  this.morte= function(){
+    if(this.vivo)
+    {
+      this.vivo=false;
+      this.cor=[255,255,255,255];
+      this.x1+=windowWidth/1000;
+      this.x3-=windowWidth/1000;
+    }
+
+  };
+  this.cor=/*round(random(60,220));*/[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240];
   this.render= function()
   {
       noStroke();
       fill(this.cor);
+      if(!this.vivo&&!this.h)
+      {
+        if(this.x1-this.x3<windowWidth/30){
+          this.x1+=windowWidth/1000;
+          this.x3-=windowWidth/1000;
+        //  this.cor[3]=map(this.x1,this.x3,-windowWidth/30,windowWidth/30,255,0);
+        }
+        else{
+          this.h=true;
+        }
 
-        if(velocidade>0&&this.x1+ velocidade>windowWidth+velocidade)
+      }
+
+        if(this.vivo&&this.velocidade>0&&this.x1+ this.velocidade>windowWidth+this.velocidade)
         {
           this.x1=-windowWidth/30 ;
           this.x2=-windowWidth/60;
           this.x3=0;
         }
 
-        else if(velocidade<0&&this.x3+ velocidade<velocidade)
+        else if(this.vivo&&this.velocidade<0&&this.x3+ this.velocidade<this.velocidade)
         {
           this.x1=windowWidth;
           this.x2=windowWidth+windowWidth/60;
           this.x3=windowWidth+windowWidth/30;
-        }else {
-          this.x1+=velocidade;
-          this.x2+=velocidade;
-          this.x3+=velocidade;
+        }else if(!this.vivo&&this.velocidade>0&&this.x3+ this.velocidade>windowWidth+this.velocidade)
+        {
+          this.x3=-windowWidth/30 ;
+          this.x2=-windowWidth/60;
+          this.x1=0;
         }
-          triangle(this.x1,this.y1,this.x2,this.y2,this.x3,this.y3);
-      }
+          else if(!this.vivo&&this.velocidade<0&&this.x1+ this.velocidade<this.velocidade)
+        {
+          this.x3=windowWidth;
+          this.x2=windowWidth+windowWidth/60;
+          this.x1=windowWidth+windowWidth/30;
+        }else {
+          this.x1+=this.velocidade;
+          this.x2+=this.velocidade;
+          this.x3+=this.velocidade;
+        }
+        triangle(this.x1,this.y1,this.x2,this.y2,this.x3,this.y3);
+      };
 
   };
   function gerarInimigos()

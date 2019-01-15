@@ -32,19 +32,44 @@ function draw()
     readyShot++;
   readyShote=frameCount%10?true:readyShote;
   barra.render(readyShot);
-  for(let i=inimigos.length-1;i>=0;i--)
-  {
-        inimigos[i].render();
-  }
   for(let i=bullets.length-1;i>=0;i--)
   {
 
-     if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i]>windowHeight)
+     if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i].y+bullets[i].a>windowHeight)
       bullets.slice(i,i+1);
+
     else{
-      bullets[i].render();
+      for(let a= inimigos.length-1;a>=0;a--)
+      {
+        if(inimigos[a].y1<inimigos[a].y2)
+        {
+          if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y>=inimigos[a].y1&&bullets[i].y+bullets[i].a<=inimigos[a].y2)
+          {
+            inimigos[a].morte();
+          }
+        }
+        else {
+          if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y<=inimigos[a].y1&&bullets[i].y+bullets[i].a>=inimigos[a].y2)
+          {
+            inimigos[a].morte();
+          }
+        }
+
+      }
+        bullets[i].render();
 
     }
+
+  }
+  for(let i=inimigos.length-1;i>=0;i--)
+  {
+        if(inimigos[i].cor[3]==0)
+        {
+          inimigos.slice(i,i+1);
+        }
+        else {
+          inimigos[i].render();
+        }
 
   }
 
