@@ -9,7 +9,7 @@ function Inimigo(x2,y1,y2,velocidade)
   this.y3=y1;
   this.h=windowWidth/15;
   this.velocidade= velocidade;
-  this.cor=/*round(random(60,220));*/[round(random(50,200)),round(random(0,100)),round(random(100,255)),240]
+  this.cor=/*round(random(60,220));*/[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240]
   this.render= function()
   {
       noStroke();

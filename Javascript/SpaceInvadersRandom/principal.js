@@ -1,4 +1,4 @@
-var readyShot=5;
+var readyShot=5, readyShote=true;
 var barra;
 function setup()
 {
@@ -20,6 +20,7 @@ function draw()
   nave.render();
   if(frameCount%50==0&&readyShot<5)
     readyShot++;
+  readyShote=frameCount%10?true:readyShote;
   barra.render(readyShot);
   for(let i=inimigos.length-1;i>=0;i--)
   {
@@ -27,12 +28,14 @@ function draw()
   }
   for(let i=bullets.length-1;i>=0;i--)
   {
-    //if(bullets[i].x) print('iajsd');
-    //else
+
      if(bullets[i].x>windowWidth||bullets[i].x<0||bullets[i]>windowHeight)
       bullets.slice(i,i+1);
-    else
-        bullets[i].render();
+    else{
+      bullets[i].render();
+
+    }
+
   }
 
 
@@ -81,5 +84,10 @@ function mobile()
 }
 function touchStarted()
 {
-  atirar();
+  if(readyShot>0)
+  {
+    atirar();
+    readyShote=false;
+  }
+
 }
