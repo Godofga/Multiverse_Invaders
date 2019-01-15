@@ -4,6 +4,7 @@ function setup()
 {
   background(40);
   loade();
+  
 }
 function draw()
 {
@@ -35,7 +36,7 @@ function draw()
     nave.render();
     if(frameCount%50==0&&readyShot<5)
       readyShot++;
-    
+
     barra.render(readyShot,wiin);
     for(let i=bullets.length-1;i>=0;i--)
     {
