@@ -55,6 +55,10 @@ function draw()
               if(bullets[i].x<=inimigos[a].x3&&bullets[i].x+bullets[i].l>=inimigos[a].x1&&bullets[i].y>=inimigos[a].y1&&bullets[i].y+bullets[i].a<=inimigos[a].y2)
               {
                 inimigos[a].morte();
+                if(isPlaying)
+                {
+                  musicyea();
+                }
               }
             }
             else {
