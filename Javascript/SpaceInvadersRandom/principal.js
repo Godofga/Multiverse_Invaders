@@ -1,4 +1,4 @@
-var readyShot=5, readyShote=false,once=true;
+var readyShot=10000, readyShote=false,once=true;
 var barra,win, bg=[40,150];
 function setup()
 {
@@ -14,7 +14,7 @@ function draw()
     nave= new Nave();
     barra= new Barra();
     nave.start();
-    gerarInimigos(false);
+    gerarInimigos(true);
   }
 
   background(bg);
@@ -83,9 +83,9 @@ function vitoria()
 
   for(let i=inimigos.length-1;i>=0;i--)
   {
-    inimigos= undefined;
+    inimigos= [];
   }
-  gerarInimigos(true);
+  gerarInimigos(false);
   bg=[255];
   nave.color=0;
 }
@@ -93,12 +93,12 @@ function vitoria()
 
 function tecla()
 {
-  if(keyIsDown('d')||keyIsDown(RIGHT_ARROW))
+  if(keyIsDown(68)||keyIsDown(RIGHT_ARROW))
   {
-    nave.walk(keyIsDown(RIGHT_ARROW));
+    nave.walk(true);
   }
-  else if (keyIsDown('a')||keyIsDown(LEFT_ARROW)) {
-    nave.walk(keyIsDown(LEFT_ARROW));
+  else if (keyIsDown(65)||keyIsDown(LEFT_ARROW)) {
+    nave.walk(false);
   }
 
 }

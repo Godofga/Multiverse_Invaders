@@ -1,5 +1,5 @@
 var inimigos=[];
-function Inimigo(x2,y1,y2,velocidade)
+function Inimigo(x2,y1,y2,velocidade,cor)
 {
   this.x1=x2-windowWidth/60;
   this.y1=y1;
@@ -20,7 +20,7 @@ function Inimigo(x2,y1,y2,velocidade)
     }
 
   };
-  this.cor=[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240];
+  this.cor=cor;
   this.render= function()
   {
       noStroke();
@@ -70,9 +70,8 @@ function Inimigo(x2,y1,y2,velocidade)
       };
 
   };
-  function gerarInimigos()
+  function gerarInimigos(first)
   {
-
     /*
 
     inimigos[i].cor=[round(random(50,255)),round(random(50,255)),round(random(50,255 )),240];
@@ -80,19 +79,25 @@ function Inimigo(x2,y1,y2,velocidade)
     inimigos[i].h=false;
 
     */
+    print(first);
     var switche=true;
     var espacamento= 1.2;
     for(let y=windowWidth/30;y<windowHeight/2;)
     {
       var velocidade=switche?random(windowWidth/300,windowWidth/500):-random(windowWidth/300,windowWidth/500);
-
+      !first?velocidade*=2:velocidade*=1;
       for(let x=0;x<windowWidth;)
       {
         if(x+windowWidth/15<windowWidth+windowWidth/15)
         {
 
           var y2=y+sqrt(3*((windowWidth/30))*((windowWidth/30)))/2;
-          inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade));
+
+          if(first)
+            inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade, [round(random(15,45)),round(random(0,0)),round(random(0,0 )),240]));
+          else {
+            inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade, [round(random(50,220)),round(random(50,220)),round(random(50,220 )),240]));
+          }
           x+=(windowWidth/30)*espacamento;
 
         }
@@ -106,7 +111,12 @@ function Inimigo(x2,y1,y2,velocidade)
         {
 
           var y2=y+sqrt(3*((windowWidth/30))*((windowWidth/30)))/2;
-          inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade));
+
+          if(first)
+            inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade,[round(random(15,45)),round(random(0,0)),round(random(0,0 )),240]));
+          else {
+            inimigos.push(new Inimigo(x+windowWidth/30,  switche ? y : y2    ,/*erro*/!switche ? y : y2 /*erro*/,velocidade,[round(random(50,220)),round(random(50,220)),round(random(50,220 )),240]));
+          }
           x+=(windowWidth/30)*espacamento;
 
         }
