@@ -50,13 +50,13 @@ function Inimigo(x2,y1,y2,velocidade)
           this.x1=windowWidth;
           this.x2=windowWidth+windowWidth/60;
           this.x3=windowWidth+windowWidth/30;
-        }else if(!this.vivo&&this.velocidade>0&&this.x3+ this.velocidade>windowWidth+this.velocidade)
+        }else if(!this.vivo&&this.velocidade>0&&this.x2-windowWidth/60+ this.velocidade>windowWidth+this.velocidade)
         {
           this.x3=-windowWidth/30 ;
           this.x2=-windowWidth/60;
           this.x1=0;
         }
-          else if(!this.vivo&&this.velocidade<0&&this.x1+ this.velocidade<this.velocidade)
+          else if(!this.vivo&&this.velocidade<0&&this.x2+windowWidth/60+ this.velocidade<this.velocidade)
         {
           this.x3=windowWidth;
           this.x2=windowWidth+windowWidth/60;

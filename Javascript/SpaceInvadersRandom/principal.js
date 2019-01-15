@@ -6,15 +6,8 @@ function setup()
 }
 function draw()
 {
-  while(deviceOrientation=='portrait')
-  {
-
-    fill(255);
-    textSize(windowWidth/30);
-    textAlign(CENTER);
-    text("Vire o dispositivo para modo paisagem", windowWidth/2,windowHeight/2);
-    text("para uma melhor experiência!", windowWidth/2, windowHeight/2 + windowWidth/30);
-  }
+  if(deviceOrientation=='portrait')
+    alert("Vire o dispositivo para modo paisagem agora para uma melhor experiência");
   if(once){
     createCanvas(windowWidth,windowHeight-4);
     once=false;
