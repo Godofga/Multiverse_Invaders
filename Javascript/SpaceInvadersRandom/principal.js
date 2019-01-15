@@ -1,19 +1,29 @@
-var readyShot=5, readyShote=true;
+var readyShot=5, readyShote=false,once=true;
 var barra;
 function setup()
 {
-
-  createCanvas(windowWidth,windowHeight-4);
   background(40);
-  nave= new Nave();
-  barra= new Barra();
-  nave.start();
-  gerarInimigos();
-
-
 }
 function draw()
 {
+  while(deviceOrientation=='portrait')
+  {
+
+    fill(255);
+    textSize(windowWidth/30);
+    textAlign(CENTER);
+    text("Vire o dispositivo para modo paisagem", windowWidth/2,windowHeight/2);
+    text("para uma melhor experiência!", windowWidth/2, windowHeight/2 + windowWidth/30);
+  }
+  if(once){
+    createCanvas(windowWidth,windowHeight-4);
+    once=false;
+    nave= new Nave();
+    barra= new Barra();
+    nave.start();
+    gerarInimigos();
+  }
+
   background(40,150);
   tecla();
   mobile();
@@ -64,8 +74,7 @@ function atirar()
 function mobile()
 {
   if(deviceOrientation=='portrait')
-  {
-    if(rotationY>20){
+  {    if(rotationY>20){
       nave.walk(true);
     }
     else if(rotationY<-20) {
@@ -84,7 +93,7 @@ function mobile()
 }
 function touchStarted()
 {
-  if(readyShot>0)
+  if(readyShot>0&&readyShote==true)
   {
     atirar();
     readyShote=false;
