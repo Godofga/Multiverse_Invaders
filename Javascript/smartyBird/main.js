@@ -31,10 +31,10 @@ const mut = 0.1;
 
 function preload() {
 
-  fontAMGDT = loadFont('../Site/font/AMGDT.ttf');
-  kuriboh[0] = loadImage('../Site/img/smartybird/kuriboh.png');
-  kuriboh[1] = loadImage('../Site/img/smartybird/kuriboh1.png');
-  kuriboh[2] = loadImage('../Site/img/smartybird/kuriboh2.png');
+  fontAMGDT = loadFont('./font/AMGDT.ttf');
+  kuriboh[0] = loadImage('./img/smartybird/kuriboh.png');
+  kuriboh[1] = loadImage('./img/smartybird/kuriboh1.png');
+  kuriboh[2] = loadImage('./img/smartybird/kuriboh2.png');
   loadSounds();
 }
 

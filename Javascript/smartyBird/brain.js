@@ -7,7 +7,7 @@ function createBrain(){
       this.modelo = tf.sequential();
 
       //Hidden layer
-
+      
       this.modelo.add(tf.layers.dense({
         units: 3 ,
         inputShape: [2],
