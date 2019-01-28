@@ -71,7 +71,7 @@ function generation(){
     //Selecting the fathers
     for(let u=0;u<bestkeep;u++)
       if(i==beasts[u]){
-        crossover(beasts[u],beasts[u],i);
+        brains[i].setWeights(deadbrains[i].getWeights());
         birds.push(new bird(i));
         found=true;
 
