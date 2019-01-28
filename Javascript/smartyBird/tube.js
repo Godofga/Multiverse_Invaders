@@ -6,7 +6,7 @@ class tube {
       this.topy = round(random(canvas.height/4,canvas.height*3/4));
       this.boty = this.topy + 150;
       this.x = canvas.width;
-      this.color=0;
+      this.color=40;
     }
 
     //Rendering
