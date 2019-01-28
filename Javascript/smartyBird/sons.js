@@ -1,6 +1,6 @@
 var musica;
 function loadSounds(){
-  musica = loadSound('../Site/audio/thinkuriboh/lofi.mp3');
+  musica = loadSound('./audio/thinkuriboh/lofi.mp3');
   //flap = loadSound('../Site/audio/thinkuriboh/lofi.mp3');
 }
 function playMusic(){
