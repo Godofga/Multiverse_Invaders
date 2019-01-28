@@ -8,10 +8,9 @@
 }
 
 html, body {
-  background-image: url("../img/smartybird/bg.png");
+
   background-size: 100%;
-  background-color: black;
-  background-repeat:no-repeat;
+  background-color: rgb(60,60,60);
   margin:0;
   padding:0;
   height: 100%;
