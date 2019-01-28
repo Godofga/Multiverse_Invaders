@@ -1,4 +1,4 @@
-var bestkeep = 10;
+var bestkeep = 5;
 let beasts = [];
 let birdbeasts = [];
 
@@ -8,7 +8,7 @@ function generation(){
   nGeneration++;
 
   let all=0;
-  if(nGeneration%5)
+  if(nGeneration%20)
   for(let i=0;i<bestkeep;i++)
   {
     beasts[i]=0;
@@ -27,7 +27,7 @@ function generation(){
 
         for(let u=0;u<bestkeep;u++)
         {
-          if(cemetery[birdbeasts[u]].fitness<=cemetery[birdbeasts[min]].fitness){
+          if(cemetery[birdbeasts[u]].fitness<cemetery[birdbeasts[min]].fitness){
             min=u;
           }
         }
@@ -58,6 +58,7 @@ function generation(){
 
   for(let i=0;i<population;i++)
   {
+
     if(cemetery[birdbeasts[max]].fitness<150){
       crossover(i,i,i,true);
       birds.push(new bird(i));
@@ -70,10 +71,10 @@ function generation(){
     //Selecting the fathers
     for(let u=0;u<bestkeep;u++)
       if(i==beasts[u]){
-        brains[i].setWeights(deadbrains[i].getWeights());
+        crossover(beasts[u],beasts[u],i);
         birds.push(new bird(i));
         found=true;
-        break;
+
       }
 
       if(found)
@@ -85,15 +86,16 @@ function generation(){
         counter++;
         continue;
 
+
       }
-      // if(counterb<bestkeep){
-      //   crossover(beasts[counterb],beasts[counterb],i)
-      //   birds.push(new bird(i));
-      //   counter++;
-      //   continue;
-      //
-      // }
-      if(counterR<population-10){
+      if(counterb<bestkeep){
+         crossover(beasts[counterb],beasts[counterb],i)
+        birds.push(new bird(i));
+        counterb++;
+        continue;
+
+       }
+      if(counterR<population){
         crossover(i,i,i,true);
         birds.push(new bird(i));
         counterR++;
