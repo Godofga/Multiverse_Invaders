@@ -36,5 +36,4 @@ function loade()
   estouro.push(createAudio('./audio/P5JSGAME/pop5.mp3'));
   vitori= createAudio('./audio/P5JSGAME/win.mp3');
 
-  
 }
