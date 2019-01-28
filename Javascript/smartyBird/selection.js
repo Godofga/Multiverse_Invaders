@@ -46,6 +46,7 @@ function generation(){
   let counter=0;
   let counterb=0;
   let counterR=0;
+  let counterS=0;
   let max=0;
 
 
@@ -71,7 +72,7 @@ function generation(){
     //Selecting the fathers
     for(let u=0;u<bestkeep;u++)
       if(i==beasts[u]){
-        brains[i].setWeights(deadbrains[i].getWeights());
+        crossover(beasts[u],beasts[u],i);
         birds.push(new bird(i));
         found=true;
 
@@ -102,6 +103,14 @@ function generation(){
          continue;
 
         }
+        // if(counterS<bestkeep){
+        //    crossover(beasts[counterS],beasts[counterS],i)
+        //   birds.push(new bird(i));
+        //   counterS++;
+        //   continue;
+        //
+        //  }
+
       if(1){
         crossover(i,i,i,true);
         birds.push(new bird(i));
@@ -181,9 +190,9 @@ function crossover(brain0,brain1,index,para=false){
         if(para)
           array[0][i][j] = random(-1,1)
         else if(prob<0.1)
-          array[0][i][j] *= random(1.5,-.5);
+          array[0][i][j] *= random(1.3,-.3);
         else if(j>aleatorio)
-          array[0][i][j] *= random(.7,1.3);
+          array[0][i][j] *= random(.8,1.2);
 
         //else if(prob>=8)
           //array[0][i][j] = random(1);
