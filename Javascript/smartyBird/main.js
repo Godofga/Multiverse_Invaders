@@ -1,4 +1,4 @@
-//Birds
+  //Birds
 
 const population = 100;
 const birdD = 50;
@@ -32,16 +32,22 @@ const mut = 0.1;
 function preload() {
 
   fontAMGDT = loadFont('./font/AMGDT.ttf');
-  kuriboh[0] = loadImage('./img/smartybird/kuriboh.png');
-  kuriboh[1] = loadImage('./img/smartybird/kuriboh1.png');
-  kuriboh[2] = loadImage('./img/smartybird/kuriboh2.png');
+  kuriboh[0]= [];
+  kuriboh[1]= [];
+  kuriboh[0][0] = loadImage('./img/smartybird/kuriboh.png');
+  kuriboh[0][1] = loadImage('./img/smartybird/kuriboh1.png');
+  kuriboh[0][2] = loadImage('./img/smartybird/kuriboh2.png');
+  kuriboh[1][0] = loadImage('./img/smartybird/wkuriboh.png');
+  kuriboh[1][1] = loadImage('./img/smartybird/wkuriboh1.png');
+  kuriboh[1][2] = loadImage('./img/smartybird/wkuriboh2.png');
   loadSounds();
 }
 
 function setup(){
 
   //Setting up canvas
-
+  let mensagem =document.getElementById('ui');
+  mensagem.innerHTML = "";
   canvas = createCanvas(800,800);
   canvas.parent('ui');
 

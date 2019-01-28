@@ -25,6 +25,8 @@ html, body {
   margin-right: auto;
   margin-left: auto;
   position:relative;
+  text-align: center;
+
   top:40px;
 }
 
@@ -38,5 +40,16 @@ html, body {
 }
 .rodape p{
   color:white;
+
+}
+.tela p{
+  font-family: "AMGDT";
+  font-weight:bold;
+  position: relative;
+  margin-top: 340px;
+  margin-bottom: auto;
+  top:0;
+  font-size: 60px;
+  color: rgb(40,40,40);
 
 }

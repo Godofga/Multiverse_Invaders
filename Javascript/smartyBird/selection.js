@@ -95,7 +95,14 @@ function generation(){
         continue;
 
        }
-      if(counterR<population){
+       if(counterR<bestkeep){
+          crossover(beasts[counterR],beasts[counterR],i)
+         birds.push(new bird(i));
+         counterR++;
+         continue;
+
+        }
+      if(1){
         crossover(i,i,i,true);
         birds.push(new bird(i));
         counterR++;

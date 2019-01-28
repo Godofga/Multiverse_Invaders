@@ -14,7 +14,7 @@ class bird{
       this.y = random(canvas.height / 2 +30,canvas.height / 2 -30);
       this.vy = 0;
       this.a = 0;
-      this.cor = [random(100,120),0,random(200,220),100];
+      this.cor = round(random(kuriboh.length-1));
 
     }
 
@@ -27,11 +27,11 @@ class bird{
 
       fill(this.cor);
       if(this.jumpTimer>9)
-        image(kuriboh[0],this.x-birdD/2,this.y-birdD/2);
+        image(kuriboh[this.cor][0],this.x-birdD/2,this.y-birdD/2);
       else if(this.jumpTimer>0)
-        image(kuriboh[1],this.x-birdD/2,this.y-birdD/2);
+        image(kuriboh[this.cor][1],this.x-birdD/2,this.y-birdD/2);
       else {
-        image(kuriboh[2],this.x-birdD/2,this.y-birdD/2);
+        image(kuriboh[this.cor][2],this.x-birdD/2,this.y-birdD/2);
       }
     //  ellipse(this.x, this.y, birdD, birdD);
 
@@ -89,7 +89,7 @@ class bird{
       //Inputs
 
       //let y = this.y/canvas.height;
-      //let v = map(this.vy,-20,20,1,-1);
+      //let v = this.vy/20;
       //let yt = tubo.topy / canvas.height;
       //let yb = tubo.boty / canvas.height;
       let dx = (tubo.x+tubeW-this.x) / canvas.width;
